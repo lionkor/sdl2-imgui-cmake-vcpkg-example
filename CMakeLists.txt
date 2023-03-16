@@ -17,11 +17,18 @@ set(PRJ_MAIN src/main.cpp)
 
 # add library targets here
 set(PRJ_LIBRARIES 
-    fmt::fmt
+    fmt
+    # sdl2
+    $<TARGET_NAME_IF_EXISTS:SDL2::SDL2main>
+    $<IF:$<TARGET_EXISTS:SDL2::SDL2>,SDL2::SDL2,SDL2::SDL2-static>
+    # imgui
+    imgui::imgui
 )
 
 # add dependency find_package calls and similar here
 find_package(fmt CONFIG REQUIRED)
+find_package(SDL2 CONFIG REQUIRED)
+find_package(imgui CONFIG REQUIRED)
 
 add_executable(${PROJECT_NAME} ${PRJ_HEADERS} ${PRJ_SOURCES} ${PRJ_MAIN})
 target_link_libraries(${PROJECT_NAME} ${PRJ_LIBRARIES})

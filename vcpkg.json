@@ -2,6 +2,14 @@
   "name": "my-test",
   "version-string": "0.1.0",
   "dependencies": [
-      "fmt"
+      "fmt",
+      "sdl2",
+      { 
+        "name": "imgui", 
+        "features": [
+          "opengl3-binding", 
+          "sdl2-binding"
+        ] 
+      }
   ]
 }
