@@ -23,12 +23,15 @@ set(PRJ_LIBRARIES
     $<IF:$<TARGET_EXISTS:SDL2::SDL2>,SDL2::SDL2,SDL2::SDL2-static>
     # imgui
     imgui::imgui
+    # opengl
+    OpenGL::GL
 )
 
 # add dependency find_package calls and similar here
 find_package(fmt CONFIG REQUIRED)
 find_package(SDL2 CONFIG REQUIRED)
 find_package(imgui CONFIG REQUIRED)
+find_package(OpenGL REQUIRED)
 
 add_executable(${PROJECT_NAME} ${PRJ_HEADERS} ${PRJ_SOURCES} ${PRJ_MAIN})
-target_link_libraries(${PROJECT_NAME} ${PRJ_LIBRARIES})
+target_link_libraries(${PROJECT_NAME} PRIVATE ${PRJ_LIBRARIES})
