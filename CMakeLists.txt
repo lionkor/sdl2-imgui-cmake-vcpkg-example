@@ -17,7 +17,7 @@ set(PRJ_MAIN src/main.cpp)
 
 # add library targets here
 set(PRJ_LIBRARIES 
-    fmt
+    fmt::fmt
     # sdl2
     $<TARGET_NAME_IF_EXISTS:SDL2::SDL2main>
     $<IF:$<TARGET_EXISTS:SDL2::SDL2>,SDL2::SDL2,SDL2::SDL2-static>
